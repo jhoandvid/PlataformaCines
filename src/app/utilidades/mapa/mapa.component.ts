@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {icon, latLng, LeafletEvent, LeafletMouseEvent, marker, Marker, tileLayer} from "leaflet";
+import {icon, latLng, LeafletMouseEvent, marker, Marker, tileLayer} from "leaflet";
 import {Coordenada} from "./coordenada";
 
 @Component({
