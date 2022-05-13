@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {latLng, LeafletEvent, LeafletMouseEvent, marker, Marker, tileLayer} from "leaflet";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {icon, latLng, LeafletEvent, LeafletMouseEvent, marker, Marker, tileLayer} from "leaflet";
+import {Coordenada} from "./coordenada";
 
 @Component({
   selector: 'app-mapa',
@@ -9,8 +10,12 @@ import {latLng, LeafletEvent, LeafletMouseEvent, marker, Marker, tileLayer} from
 export class MapaComponent implements OnInit {
 
   constructor() { }
-
+  @Input()
+  coordenadasIniciales:Coordenada[]=[];
+  @Output()
+  coordenadaSeleccionada:EventEmitter<Coordenada>=new EventEmitter<Coordenada>();
   ngOnInit(): void {
+    this.capas=this.coordenadasIniciales.map(valor=>marker([valor.latitud, valor.longitud]))
   }
 options = {
 	layers: [
@@ -27,6 +32,13 @@ options = {
     console.log({latitud, longitud})
 
     this.capas=[];
-    this.capas.push(marker([latitud, longitud]))
+    this.capas.push(marker([latitud, longitud], {icon:icon({
+        iconSize:[25,41],
+        iconAnchor:[12,41],
+        iconUrl:'marker-icon.png',
+        iconRetinaUrl:'marker-icon-2x.png',
+        shadowUrl:'assets/marker-shadow.png'
+      })}))
+    this.coordenadaSeleccionada.emit({latitud:latitud, longitud:longitud});
   }
 }
