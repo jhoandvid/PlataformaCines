@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
 import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MarkdownModule} from "ngx-markdown";
-import {LeafletModule} from "@asymmetrik/ngx-leaflet";
+import { MarkdownModule } from 'ngx-markdown';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-import {ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from "./material/material.module";
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './utilidades/rating/rating.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -36,7 +37,8 @@ import { MapaComponent } from './utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
-import {MatListModule} from "@angular/material/list";
+import { MatListModule } from '@angular/material/list';
+import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
 
 @NgModule({
   declarations: [
@@ -67,20 +69,21 @@ import {MatListModule} from "@angular/material/list";
     FormularioPeliculaComponent,
     SelectorMultipleComponent,
     AutocompleteActoresComponent,
-
+    MostrarErroresComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        MarkdownModule.forRoot(),
-        LeafletModule,
-        MatListModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    MarkdownModule.forRoot(),
+    LeafletModule,
+    MatListModule,
+    HttpClientModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
